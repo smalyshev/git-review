@@ -1574,6 +1574,11 @@ def _main():
                                                    branch, remote,
                                                    config['project'])
         if options.download:
+            if options.topic:
+                if options.topic == '@':
+                    local_branch = local_branch.split('/')[-1]
+                else:
+                    local_branch = options.topic
             checkout_review(local_branch, remote, remote_branch)
         else:
             if options.cherrypickcommit:
